@@ -28,10 +28,10 @@ parser.add_argument("-s", "--step", type=float, default=0.8,
                     help="Steps changing the cutoff value, between 0 and 1 (%)")
 parser.add_argument("-i", "--iterations", type=int, default=24,
                     help="Iterations: how many times to try running the detection")
-parser.add_argument("-v", "--verbose", action='store_true',
-                    help="Verbose mode on: print more info") # not implemented
-parser.add_argument("-l", "--log", type=str, 
-                    help="Log: log operations to this file") # not implemented
+# parser.add_argument("-v", "--verbose", action='store_true',
+#                     help="Verbose mode on: print more info") # not implemented
+# parser.add_argument("-l", "--log", type=str, 
+#                     help="Log: log operations to this file") # not implemented
 parser.add_argument("-a", "--min", type=int, default=2,
                     help="From/minimum: Minimum acceptable number of keyframes")
 parser.add_argument("-z", "--max", type=int, default=12,
@@ -84,7 +84,7 @@ def countcontrol():
         keyframes()
     elif n > args.max:
         print("Too many keyframes, let's try again!")
-        args.cutoff *= 1+args.step
+        args.cutoff *= 1+(args.step/2)
         keyframes()
     else:
         print(f"Solution found! Check {args.output} directory!")
